@@ -20,12 +20,12 @@ from typing import List
 from typing import Union
 
 DICT_EN = 'tools/aligner/cmudict-0.7b'
-DICT_ZH = 'tools/aligner/simple.lexicon'
+DICT_ZH = 'tools/aligner/canton.lexicon'
 MODEL_DIR_EN = 'tools/aligner/vctk_model.zip'
-MODEL_DIR_ZH = 'tools/aligner/aishell3_model.zip'
+MODEL_DIR_ZH = 'tools/aligner/canton_model.zip'
 MFA_PHONE_EN = 'tools/aligner/vctk_model/meta.yaml'
-MFA_PHONE_ZH = 'tools/aligner/aishell3_model/meta.yaml'
-MFA_PATH = 'tools/montreal-forced-aligner/bin'
+MFA_PHONE_ZH = 'tools/aligner/canton_model/meta.yaml'
+MFA_PATH = 'local/montreal-forced-aligner/bin'
 os.environ['PATH'] = MFA_PATH + '/:' + os.environ['PATH']
 
 
@@ -159,8 +159,15 @@ def get_check_result(label_file: Union[str, Path],
         print('please input right lang!!')
 
     pronunciation_phones = get_pronunciation_phones(lexicon_file)
+    print('start getting pronunciation_phones')
+    print(pronunciation_phones)
+    print(pronunciation_phones.keys())
     mfa_phones = get_mfa_phone(mfa_phone_file)
+    print('start getting mfa_phones')
+    print(mfa_phones)
     am_phones = get_am_phone(am_phone_file)
+    print('start getting am_phones')
+    print(am_phones)
     oov_words, oov_files, oov_file_words = check_phone(
         label_file=label_file,
         pronunciation_phones=pronunciation_phones,
@@ -175,7 +182,9 @@ def get_check_result(label_file: Union[str, Path],
     with open(label_file, "r") as f:
         for line in f.readlines():
             utt_id = line.split("|")[0]
+            print('utt_id ' + utt_id)
             if utt_id not in oov_files:
+                print('utt_id not in oov_files')
                 transcription = line.split("|")[1].strip()
                 wav_file = str(input_dir) + "/" + utt_id + ".wav"
                 new_wav_file = str(new_dir) + "/" + utt_id + ".wav"
@@ -199,7 +208,7 @@ if __name__ == '__main__':
     parser.add_argument(
         "--pretrained_model_dir",
         type=str,
-        default="./pretrained_models/fastspeech2_aishell3_ckpt_1.1.0",
+        default="./pretrained_models/fastspeech2_canton_ckpt_1.4.0",
         help="Path to pretrained model")
 
     parser.add_argument(

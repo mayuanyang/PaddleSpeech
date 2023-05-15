@@ -17,12 +17,12 @@ from pathlib import Path
 from typing import Union
 
 DICT_EN = 'tools/aligner/cmudict-0.7b'
-DICT_ZH = 'tools/aligner/simple.lexicon'
+DICT_ZH = 'tools/aligner/canton.lexicon'
 MODEL_DIR_EN = 'tools/aligner/vctk_model.zip'
-MODEL_DIR_ZH = 'tools/aligner/aishell3_model.zip'
+MODEL_DIR_ZH = 'tools/aligner/canton_model.zip'
 MFA_PHONE_EN = 'tools/aligner/vctk_model/meta.yaml'
-MFA_PHONE_ZH = 'tools/aligner/aishell3_model/meta.yaml'
-MFA_PATH = 'tools/montreal-forced-aligner/bin'
+MFA_PHONE_ZH = 'tools/aligner/canton_model/meta.yaml'
+MFA_PATH = 'local/montreal-forced-aligner/bin'
 os.environ['PATH'] = MFA_PATH + '/:' + os.environ['PATH']
 
 
@@ -50,7 +50,8 @@ def get_mfa_result(
 
     CMD = 'mfa_align' + ' ' + str(
         input_dir) + ' ' + DICT + ' ' + MODEL_DIR + ' ' + str(mfa_dir)
-    os.system(CMD)
+    result = os.system(CMD)
+    print('executing ' + CMD)
 
 
 if __name__ == '__main__':
