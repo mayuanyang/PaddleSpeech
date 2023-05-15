@@ -68,16 +68,20 @@ def check_phone(label_file: Union[str, Path],
             temp_oov_words = []
             for word in transcription.split(" "):
                 if word not in pronunciation_phones.keys():
+                    print('word %s not in pronunciation_phones.keys', word)
                     temp_oov_words.append(word)
                     flag = 1
                     if word not in oov_words:
+                        print('word %s not in oov_words', word)
                         oov_words.append(word)
                 else:
                     for p in pronunciation_phones[word]:
                         if p not in mfa_phones or p not in am_phones:
+                            print('pronunciation %s not in mfa_phones or am_phones', p)
                             temp_oov_words.append(word)
                             flag = 1
                             if word not in oov_words:
+                                print('word %s has pronunciation but not in oov_words', word)
                                 oov_words.append(word)
             if flag == 1:
                 oov_files.append(utt_id)
@@ -160,14 +164,10 @@ def get_check_result(label_file: Union[str, Path],
 
     pronunciation_phones = get_pronunciation_phones(lexicon_file)
     print('start getting pronunciation_phones')
-    print(pronunciation_phones)
-    print(pronunciation_phones.keys())
     mfa_phones = get_mfa_phone(mfa_phone_file)
     print('start getting mfa_phones')
-    print(mfa_phones)
     am_phones = get_am_phone(am_phone_file)
     print('start getting am_phones')
-    print(am_phones)
     oov_words, oov_files, oov_file_words = check_phone(
         label_file=label_file,
         pronunciation_phones=pronunciation_phones,
@@ -182,7 +182,7 @@ def get_check_result(label_file: Union[str, Path],
     with open(label_file, "r") as f:
         for line in f.readlines():
             utt_id = line.split("|")[0]
-            print('utt_id ' + utt_id)
+
             if utt_id not in oov_files:
                 print('utt_id not in oov_files')
                 transcription = line.split("|")[1].strip()

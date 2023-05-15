@@ -4,10 +4,10 @@ set -e
 source path.sh
 
 
-input_dir=./input/csmsc_mini
+input_dir=./input/20230505_paddle
 newdir_name="newdir"
 new_dir=${input_dir}/${newdir_name}
-pretrained_model_dir=./pretrained_models/fastspeech2_aishell3_ckpt_1.1.0
+pretrained_model_dir=./pretrained_models/fastspeech2_canton_ckpt_1.4.0
 mfa_dir=./mfa_result
 dump_dir=./dump
 output_dir=./exp/default
