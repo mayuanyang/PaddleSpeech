@@ -68,11 +68,11 @@ def check_phone(label_file: Union[str, Path],
             temp_oov_words = []
             for word in transcription.split(" "):
                 if word not in pronunciation_phones.keys():
-                    print('word %s not in pronunciation_phones.keys', word)
+                    print(f'word {word} not in pronunciation_phones.keys')
                     temp_oov_words.append(word)
                     flag = 1
                     if word not in oov_words:
-                        print('word %s not in oov_words', word)
+                        print(f'word {word} not in oov_words')
                         oov_words.append(word)
                 else:
                     for p in pronunciation_phones[word]:
@@ -81,7 +81,7 @@ def check_phone(label_file: Union[str, Path],
                             temp_oov_words.append(word)
                             flag = 1
                             if word not in oov_words:
-                                print('word %s has pronunciation but not in oov_words', word)
+                                print(f'word {word} has pronunciation but not in oov_words')
                                 oov_words.append(word)
             if flag == 1:
                 oov_files.append(utt_id)
