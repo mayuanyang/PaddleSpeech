@@ -184,7 +184,7 @@ def get_check_result(label_file: Union[str, Path],
             utt_id = line.split("|")[0]
 
             if utt_id not in oov_files:
-                print('utt_id not in oov_files')
+                print('utt_id not in oov_files', oov_files)
                 transcription = line.split("|")[1].strip()
                 wav_file = str(input_dir) + "/" + utt_id + ".wav"
                 new_wav_file = str(new_dir) + "/" + utt_id + ".wav"
