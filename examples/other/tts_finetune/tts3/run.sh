@@ -90,14 +90,14 @@ fi
 if [ ${stage} -le 6 ] && [ ${stop_stage} -ge 6 ]; then
     echo "in hifigan syn_e2e"
     python3 ${BIN_DIR}/../synthesize_e2e.py \
-        --am=fastspeech2_aishell3 \
+        --am=fastspeech2_canton \
         --am_config=${pretrained_model_dir}/default.yaml \
         --am_ckpt=${output_dir}/checkpoints/${ckpt}.pdz \
         --am_stat=${pretrained_model_dir}/speech_stats.npy \
-        --voc=hifigan_aishell3 \
-        --voc_config=pretrained_models/hifigan_aishell3_ckpt_0.2.0/default.yaml \
-        --voc_ckpt=pretrained_models/hifigan_aishell3_ckpt_0.2.0/snapshot_iter_2500000.pdz \
-        --voc_stat=pretrained_models/hifigan_aishell3_ckpt_0.2.0/feats_stats.npy \
+        --voc=pwg_aishell3 \
+        --voc_config=pretrained_models/pwg_aishell3_ckpt_0.5/default.yaml \
+        --voc_ckpt=pretrained_models/pwg_aishell3_ckpt_0.5/snapshot_iter_2500000.pdz \
+        --voc_stat=pretrained_models/pwg_aishell3_ckpt_0.5/feats_stats.npy \
         --lang=zh \
         --text=${BIN_DIR}/../sentences.txt \
         --output_dir=./test_e2e/ \
