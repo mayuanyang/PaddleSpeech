@@ -94,7 +94,7 @@ if [ ${stage} -le 6 ] && [ ${stop_stage} -ge 6 ]; then
         --am_config=${pretrained_model_dir}/default.yaml \
         --am_ckpt=${output_dir}/checkpoints/${ckpt}.pdz \
         --am_stat=${pretrained_model_dir}/speech_stats.npy \
-        --voc=pwg_aishell3 \
+        --voc=pwgan_aishell3 \
         --voc_config=pretrained_models/pwg_aishell3_ckpt_0.5/default.yaml \
         --voc_ckpt=pretrained_models/pwg_aishell3_ckpt_0.5/snapshot_iter_2500000.pdz \
         --voc_stat=pretrained_models/pwg_aishell3_ckpt_0.5/feats_stats.npy \
