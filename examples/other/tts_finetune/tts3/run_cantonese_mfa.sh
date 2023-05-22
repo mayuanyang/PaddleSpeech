@@ -4,7 +4,7 @@ mkdir -p $EXP_DIR
 LEXICON_NAME='canton'
  if [ ! -f "$EXP_DIR/$LEXICON_NAME.lexicon" ]; then
      echo "generating lexicon and training data..."
-     python local/generate_canton_lexicon_wavlabs.py --output_lexicon "$EXP_DIR/$LEXICON_NAME.lexicon" --output_wavlabs "$EXP_DIR/$LEXICON_NAME"_wavlabs --inputs input/Guangzhou_Cantonese_Scripted_Speech_Corpus_in_Vehicle input/Guangzhou_Cantonese_Scripted_Speech_Corpus_Daily_Use_Sentence_Eng_Removed
+     python local/generate_canton_lexicon_wavlabs.py --output_lexicon "$EXP_DIR/$LEXICON_NAME.lexicon" --output_wavlabs "$EXP_DIR/$LEXICON_NAME"_wavlabs --inputs input/Guangzhou_Cantonese_Scripted_Speech_Corpus_in_Vehicle input/Guangzhou_Cantonese_Scripted_Speech_Corpus_Daily_Use_Sentence_Eng_Removed input/Guangzhou_Cantonese_Scripted_Speech_Corpus_SJ
      echo "lexicon and training data done"
  fi
 
