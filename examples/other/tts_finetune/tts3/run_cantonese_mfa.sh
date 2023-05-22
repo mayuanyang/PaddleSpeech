@@ -26,7 +26,7 @@ fi
  export PATH="$MFA_DOWNLOAD_DIR/montreal-forced-aligner/bin"
  if [ ! -d "$EXP_DIR/canton_alignment" ]; then
      echo "Start MFA training..."
-     mfa_train_and_align "$EXP_DIR/$LEXICON_NAME"_wavlabs "$EXP_DIR/$LEXICON_NAME.lexicon" $EXP_DIR/canton_alignment -o $EXP_DIR/canton_model --clean --verbose --temp_directory $EXP_DIR/.mfa_train_and_align
+     mfa_train_and_align "$EXP_DIR/$LEXICON_NAME"_wavlabs "$EXP_DIR/$LEXICON_NAME.lexicon" $EXP_DIR/canton_alignment -o $EXP_DIR/canton_model --clean --verbose --temp_directory $EXP_DIR/temp_mfa_train_and_align
      echo "training done!"
      echo "results: $EXP_DIR/canton_alignment"
      echo "model: $EXP_DIR/canton_model"
