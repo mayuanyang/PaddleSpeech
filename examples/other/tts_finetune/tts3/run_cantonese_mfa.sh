@@ -2,11 +2,11 @@ EXP_DIR=exp
 
 mkdir -p $EXP_DIR
 LEXICON_NAME='canton'
-# if [ ! -f "$EXP_DIR/$LEXICON_NAME.lexicon" ]; then
-#     echo "generating lexicon and training data..."
-#     python local/generate_canton_lexicon_wavlabs.py --output_lexicon "$EXP_DIR/$LEXICON_NAME.lexicon" --output_wavlabs "$EXP_DIR/$LEXICON_NAME"_wavlabs --inputs input/Guangzhou_Cantonese_Scripted_Speech_Corpus_in_Vehicle input/Guangzhou_Cantonese_Scripted_Speech_Corpus_Daily_Use_Sentence_Eng_Removed input/Guangzhou_Cantonese_Scripted_Speech_Corpus_SJ
-#     echo "lexicon and training data done"
-# fi
+ if [ ! -f "$EXP_DIR/$LEXICON_NAME.lexicon" ]; then
+     echo "generating lexicon and training data..."
+     python local/generate_canton_lexicon_wavlabs.py --output_lexicon "$EXP_DIR/$LEXICON_NAME.lexicon" --output_wavlabs "$EXP_DIR/$LEXICON_NAME"_wavlabs --inputs input/Guangzhou_Cantonese_Scripted_Speech_Corpus_in_Vehicle input/Guangzhou_Cantonese_Scripted_Speech_Corpus_Daily_Use_Sentence_Eng_Removed input/Guangzhou_Cantonese_Scripted_Speech_Corpus_SJ
+     echo "lexicon and training data done"
+ fi
 
 
 MFA_DOWNLOAD_DIR=local/
@@ -23,12 +23,12 @@ if [ ! -d "$MFA_DOWNLOAD_DIR/montreal-forced-aligner" ]; then
     echo "extraction done!"
 fi
 
-# export PATH="$MFA_DOWNLOAD_DIR/montreal-forced-aligner/bin"
-# if [ ! -d "$EXP_DIR/canton_alignment" ]; then
-#     echo "Start MFA training..."
-#     mfa_train_and_align "$EXP_DIR/$LEXICON_NAME"_wavlabs "$EXP_DIR/$LEXICON_NAME.lexicon" $EXP_DIR/canton_alignment -o $EXP_DIR/canton_model --clean --verbose --temp_directory $EXP_DIR/.mfa_train_and_align
-#     echo "training done!"
-#     echo "results: $EXP_DIR/canton_alignment"
-#     echo "model: $EXP_DIR/canton_model"
-# fi
+ export PATH="$MFA_DOWNLOAD_DIR/montreal-forced-aligner/bin"
+ if [ ! -d "$EXP_DIR/canton_alignment" ]; then
+     echo "Start MFA training..."
+     mfa_train_and_align "$EXP_DIR/$LEXICON_NAME"_wavlabs "$EXP_DIR/$LEXICON_NAME.lexicon" $EXP_DIR/canton_alignment -o $EXP_DIR/canton_model --clean --verbose --temp_directory $EXP_DIR/.mfa_train_and_align
+     echo "training done!"
+     echo "results: $EXP_DIR/canton_alignment"
+     echo "model: $EXP_DIR/canton_model"
+ fi
 
