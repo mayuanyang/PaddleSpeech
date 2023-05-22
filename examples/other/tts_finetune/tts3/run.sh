@@ -96,9 +96,9 @@ if [ ${stage} -le 6 ] && [ ${stop_stage} -ge 6 ]; then
         --am_stat=${pretrained_model_dir}/speech_stats.npy \
         --voc=pwgan_aishell3 \
         --voc_config=pretrained_models/pwg_aishell3_ckpt_0.5/default.yaml \
-        --voc_ckpt=pretrained_models/pwg_aishell3_ckpt_0.5/snapshot_iter_2500000.pdz \
+        --voc_ckpt=pretrained_models/pwg_aishell3_ckpt_0.5/snapshot_iter_1000000.pdz \
         --voc_stat=pretrained_models/pwg_aishell3_ckpt_0.5/feats_stats.npy \
-        --lang=zh \
+        --lang=canton \
         --text=${BIN_DIR}/../sentences.txt \
         --output_dir=./test_e2e/ \
         --phones_dict=${dump_dir}/phone_id_map.txt \
