@@ -4,7 +4,7 @@ set -e
 source path.sh
 
 
-input_dir=./input/20230505_paddle
+input_dir=./input/Scott_Cantonese_Voice_Clone_Training_SJ
 newdir_name="newdir"
 new_dir=${input_dir}/${newdir_name}
 pretrained_model_dir=./pretrained_models/fastspeech2_canton_ckpt_1.4.0

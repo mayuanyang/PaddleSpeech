@@ -77,7 +77,7 @@ def check_phone(label_file: Union[str, Path],
                 else:
                     for p in pronunciation_phones[word]:
                         if p not in mfa_phones or p not in am_phones:
-                            print('pronunciation %s not in mfa_phones or am_phones', p)
+                            print(f'pronunciation {p} not in mfa_phones or am_phones')
                             temp_oov_words.append(word)
                             flag = 1
                             if word not in oov_words:
