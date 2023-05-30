@@ -19,7 +19,7 @@ if [ ${stage} -le 1 ] && [ ${stop_stage} -ge 1 ]; then
     echo "Extract features ..."
     python3 ${BIN_DIR}/preprocess.py \
         --dataset=canton \
-        --rootdir=~/datasets/canton_all \
+        --rootdir=datasets/canton_all \
         --dumpdir=dump \
         --dur-file=durations.txt \
         --config=${config_path} \

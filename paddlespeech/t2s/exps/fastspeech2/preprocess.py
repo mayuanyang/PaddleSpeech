@@ -255,8 +255,9 @@ def main():
     else:
         spk_emb_dir = None
 
-    assert rootdir.is_dir()
-    assert dur_file.is_file()
+    # Added by eddy, we disable this check as we change the datasets directory from ~/datasets to the local folder /datasets
+    #assert rootdir.is_dir()
+    #assert dur_file.is_file()
 
     with open(args.config, 'rt') as f:
         config = CfgNode(yaml.safe_load(f))
