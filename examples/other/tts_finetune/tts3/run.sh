@@ -16,7 +16,7 @@ ngpu=1
 finetune_config=./conf/finetune.yaml
 replace_spkid=0
 
-ckpt=snapshot_iter_96699
+ckpt=snapshot_iter_140100
 
 gpus=1
 CUDA_VISIBLE_DEVICES=${gpus}
@@ -88,7 +88,7 @@ fi
 
 # synthesize e2e
 if [ ${stage} -le 6 ] && [ ${stop_stage} -ge 6 ]; then
-    echo "in hifigan syn_e2e"
+    echo "in pwgan syn_e2e"
     python3 ${BIN_DIR}/../synthesize_e2e.py \
         --am=fastspeech2_canton \
         --am_config=${pretrained_model_dir}/default.yaml \
@@ -98,6 +98,26 @@ if [ ${stage} -le 6 ] && [ ${stop_stage} -ge 6 ]; then
         --voc_config=pretrained_models/pwg_aishell3_ckpt_0.5/default.yaml \
         --voc_ckpt=pretrained_models/pwg_aishell3_ckpt_0.5/snapshot_iter_1000000.pdz \
         --voc_stat=pretrained_models/pwg_aishell3_ckpt_0.5/feats_stats.npy \
+        --lang=canton \
+        --text=${BIN_DIR}/../sentences.txt \
+        --output_dir=./test_e2e/ \
+        --phones_dict=${dump_dir}/phone_id_map.txt \
+        --speaker_dict=${dump_dir}/speaker_id_map.txt \
+        --spk_id=$replace_spkid
+fi
+
+# synthesize e2e
+if [ ${stage} -le 7 ] && [ ${stop_stage} -ge 7 ]; then
+    echo "in hifigan syn_e2e"
+    python3 ${BIN_DIR}/../synthesize_e2e.py \
+        --am=fastspeech2_canton \
+        --am_config=${pretrained_model_dir}/default.yaml \
+        --am_ckpt=${output_dir}/checkpoints/${ckpt}.pdz \
+        --am_stat=${pretrained_model_dir}/speech_stats.npy \
+        --voc=hiwigan_aishell3 \
+        --voc_config=pretrained_models/hiwigan_aishell3_ckpt_0.2.0/default.yaml \
+        --voc_ckpt=pretrained_models/hiwigan_aishell3_ckpt_0.2.0/snapshot_iter_2500000.pdz \
+        --voc_stat=pretrained_models/hiwigan_aishell3_ckpt_0.2.0/feats_stats.npy \
         --lang=canton \
         --text=${BIN_DIR}/../sentences.txt \
         --output_dir=./test_e2e/ \
