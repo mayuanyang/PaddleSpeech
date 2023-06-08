@@ -99,7 +99,7 @@ if [ ${stage} -le 6 ] && [ ${stop_stage} -ge 6 ]; then
         --voc_ckpt=pretrained_models/pwg_aishell3_ckpt_0.5/snapshot_iter_1000000.pdz \
         --voc_stat=pretrained_models/pwg_aishell3_ckpt_0.5/feats_stats.npy \
         --lang=canton \
-        --text=${BIN_DIR}/../sentences.txt \
+        --text=${BIN_DIR}/../sentences_canton.txt \
         --output_dir=./test_e2e/ \
         --phones_dict=${dump_dir}/phone_id_map.txt \
         --speaker_dict=${dump_dir}/speaker_id_map.txt \
@@ -119,8 +119,8 @@ if [ ${stage} -le 7 ] && [ ${stop_stage} -ge 7 ]; then
         --voc_ckpt=pretrained_models/hiwigan_aishell3_ckpt_0.2.0/snapshot_iter_2500000.pdz \
         --voc_stat=pretrained_models/hiwigan_aishell3_ckpt_0.2.0/feats_stats.npy \
         --lang=canton \
-        --text=${BIN_DIR}/../sentences.txt \
-        --output_dir=./test_e2e/ \
+        --text=${BIN_DIR}/../sentences_canton.txt \
+        --output_dir=./test_e2e_hifi/ \
         --phones_dict=${dump_dir}/phone_id_map.txt \
         --speaker_dict=${dump_dir}/speaker_id_map.txt \
         --spk_id=$replace_spkid
