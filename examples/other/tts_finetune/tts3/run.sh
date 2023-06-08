@@ -114,10 +114,10 @@ if [ ${stage} -le 7 ] && [ ${stop_stage} -ge 7 ]; then
         --am_config=${pretrained_model_dir}/default.yaml \
         --am_ckpt=${output_dir}/checkpoints/${ckpt}.pdz \
         --am_stat=${pretrained_model_dir}/speech_stats.npy \
-        --voc=hiwigan_aishell3 \
-        --voc_config=pretrained_models/hiwigan_aishell3_ckpt_0.2.0/default.yaml \
-        --voc_ckpt=pretrained_models/hiwigan_aishell3_ckpt_0.2.0/snapshot_iter_2500000.pdz \
-        --voc_stat=pretrained_models/hiwigan_aishell3_ckpt_0.2.0/feats_stats.npy \
+        --voc=hifigan_aishell3 \
+        --voc_config=pretrained_models/hifigan_aishell3_ckpt_0.2.0/default.yaml \
+        --voc_ckpt=pretrained_models/hifigan_aishell3_ckpt_0.2.0/snapshot_iter_2500000.pdz \
+        --voc_stat=pretrained_models/hifigan_aishell3_ckpt_0.2.0/feats_stats.npy \
         --lang=canton \
         --text=${BIN_DIR}/../sentences_canton.txt \
         --output_dir=./test_e2e_hifi/ \
